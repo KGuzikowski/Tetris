@@ -111,35 +111,15 @@ int main(int argc, char *argv[]){
                     break;
                 case SDL_SCANCODE_LEFT:
                 case SDL_SCANCODE_A:
-                    left = 1;
+                    x_pos -= vel;
                     break;
                 case SDL_SCANCODE_DOWN:
                 case SDL_SCANCODE_S:
-                    down = 1;
+                    y_pos += vel;
                     break;
                 case SDL_SCANCODE_RIGHT:
                 case SDL_SCANCODE_D:
-                    right = 1;
-                    break;
-                }
-                break;
-            case(SDL_KEYUP):
-               switch(event.key.keysym.scancode){
-                case SDL_SCANCODE_UP:
-                case SDL_SCANCODE_W:
-                    up = 0;
-                    break;
-                case SDL_SCANCODE_LEFT:
-                case SDL_SCANCODE_A:
-                    left = 0;
-                    break;
-                case SDL_SCANCODE_DOWN:
-                case SDL_SCANCODE_S:
-                    down = 0;
-                    break;
-                case SDL_SCANCODE_RIGHT:
-                case SDL_SCANCODE_D:
-                    right = 0;
+                    x_pos += vel;
                     break;
                 }
                 break;
@@ -159,9 +139,9 @@ int main(int argc, char *argv[]){
 
         //block animation
         if(count%70 == 0) y_pos += vel;
-        if(left && !right) x_pos -= vel;
-        if(right && !left) x_pos += vel;
-        if(down) y_pos += vel;
+        //if(left && !right) x_pos -= vel;
+        //if(right && !left) x_pos += vel;
+        //if(down) y_pos += vel;
 
         drawT_shape(renderer, x_pos, y_pos);
 

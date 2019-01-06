@@ -13,12 +13,20 @@
 
 int main(int argc, char *argv[]){
     //variables
+    int isOpen = 1;
+    int up = 0;
+    int down = 0;
+    int left = 0;
+    int right = 0;
+    int delay = 900;
+    int vel = 50;
+    int count = 1;
     int score = 0;
-    int x_pos, y_pos = 120;
+    int x_pos, y_pos = 150;
 
     //generating random y_pos
     srand(time(NULL));
-    x_pos = (rand()%WIDTH) + 1;
+    x_pos = (rand()%10) * 50;
 
     //SDL initialization
     if(SDL_Init(SDL_INIT_VIDEO) != 0){
@@ -88,13 +96,52 @@ int main(int argc, char *argv[]){
     }
 
     //Game loop
-    int isOpen = 1;
     while(isOpen){
         SDL_Event event;
         while(SDL_PollEvent(&event)){
             switch(event.type){
             case SDL_QUIT:
                 isOpen = 0;
+                break;
+            case(SDL_KEYDOWN):
+                switch(event.key.keysym.scancode){
+                case SDL_SCANCODE_UP:
+                case SDL_SCANCODE_W:
+                    up = 1;
+                    break;
+                case SDL_SCANCODE_LEFT:
+                case SDL_SCANCODE_A:
+                    left = 1;
+                    break;
+                case SDL_SCANCODE_DOWN:
+                case SDL_SCANCODE_S:
+                    down = 1;
+                    break;
+                case SDL_SCANCODE_RIGHT:
+                case SDL_SCANCODE_D:
+                    right = 1;
+                    break;
+                }
+                break;
+            case(SDL_KEYUP):
+               switch(event.key.keysym.scancode){
+                case SDL_SCANCODE_UP:
+                case SDL_SCANCODE_W:
+                    up = 0;
+                    break;
+                case SDL_SCANCODE_LEFT:
+                case SDL_SCANCODE_A:
+                    left = 0;
+                    break;
+                case SDL_SCANCODE_DOWN:
+                case SDL_SCANCODE_S:
+                    down = 0;
+                    break;
+                case SDL_SCANCODE_RIGHT:
+                case SDL_SCANCODE_D:
+                    right = 0;
+                    break;
+                }
                 break;
             }
         }
@@ -105,21 +152,25 @@ int main(int argc, char *argv[]){
         //set title text
         set_text(window, renderer, title_font, score_font, score_num_font, score);
 
-        /*SDL_Rect rectToDraw = {100,100,100,100};
-        SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-        SDL_RenderFillRect(renderer, &rectToDraw);
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-        SDL_RenderDrawRect(renderer, &rectToDraw);*/
-
         /*drawI_shape(renderer, x_pos, y_pos);
-        drawL_shape(renderer, 200, 200);
-        drawR_shape(renderer, 200, 200);
-        drawS_shape(renderer, 200, 200);*/
+        drawL_shape(renderer, x_pos, y_pos);
+        drawR_shape(renderer, x_pos, y_pos);
+        drawS_shape(renderer, x_pos, y_pos);*/
+
+        //block animation
+        if(count%70 == 0) y_pos += vel;
+        if(left && !right) x_pos -= vel;
+        if(right && !left) x_pos += vel;
+        if(down) y_pos += vel;
+
         drawT_shape(renderer, x_pos, y_pos);
+
+        //set grid
+        set_grid(renderer);
 
         //draw
         SDL_RenderPresent(renderer);
-
+        count++;
     }
 
     TTF_CloseFont(score_num_font);

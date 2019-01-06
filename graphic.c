@@ -16,8 +16,20 @@ void set_bg(SDL_Renderer *renderer){
     SDL_RenderClear(renderer);
     //Set top bar
     SDL_SetRenderDrawColor(renderer, 88, 62, 96, 0);
-    SDL_Rect top_bar = {0, 0, WIDTH, 120};
+    SDL_Rect top_bar = {0, 0, WIDTH, 150};
     SDL_RenderFillRect(renderer, &top_bar);
+}
+
+void set_grid(SDL_Renderer *renderer){
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
+
+    for(int i = 1; i <= 18; i++){
+       SDL_RenderDrawLine(renderer, 0, (i*50 + 150), WIDTH, (i*50 + 150));
+    }
+
+    for(int j = 1; j <= 10; j++){
+         SDL_RenderDrawLine(renderer, (j*50), 150, (j*50), HEIGHT);
+    }
 }
 
 void set_text(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font, TTF_Font *score_font, TTF_Font *score_num_font, int score){
@@ -151,17 +163,17 @@ void drawI_shape(SDL_Renderer *renderer, int x, int y){
     SDL_RenderFillRect(renderer, &fshape.shape[1]);
     SDL_RenderFillRect(renderer, &fshape.shape[2]);
     SDL_RenderFillRect(renderer, &fshape.shape[3]);
-    //render block's outlines
+    /*//render block's outlines
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
     SDL_RenderDrawRect(renderer, &fshape.shape[0]);
     SDL_RenderDrawRect(renderer, &fshape.shape[1]);
     SDL_RenderDrawRect(renderer, &fshape.shape[2]);
-    SDL_RenderDrawRect(renderer, &fshape.shape[3]);
+    SDL_RenderDrawRect(renderer, &fshape.shape[3]);*/
 }
 
 void drawL_shape(SDL_Renderer *renderer, int x, int y){
     int size = 50;
-    I_shape fshape;
+    L_shape fshape;
     //1 block
     fshape.shape[0].x = x;
     fshape.shape[0].y = y;
@@ -189,17 +201,17 @@ void drawL_shape(SDL_Renderer *renderer, int x, int y){
     SDL_RenderFillRect(renderer, &fshape.shape[1]);
     SDL_RenderFillRect(renderer, &fshape.shape[2]);
     SDL_RenderFillRect(renderer, &fshape.shape[3]);
-    //render block's outlines
+    /*//render block's outlines
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
     SDL_RenderDrawRect(renderer, &fshape.shape[0]);
     SDL_RenderDrawRect(renderer, &fshape.shape[1]);
     SDL_RenderDrawRect(renderer, &fshape.shape[2]);
-    SDL_RenderDrawRect(renderer, &fshape.shape[3]);
+    SDL_RenderDrawRect(renderer, &fshape.shape[3]);*/
 }
 
 void drawR_shape(SDL_Renderer *renderer, int x, int y){
     int size = 50;
-    I_shape fshape;
+    R_shape fshape;
     //1 block
     fshape.shape[0].x = x;
     fshape.shape[0].y = y;
@@ -227,17 +239,17 @@ void drawR_shape(SDL_Renderer *renderer, int x, int y){
     SDL_RenderFillRect(renderer, &fshape.shape[1]);
     SDL_RenderFillRect(renderer, &fshape.shape[2]);
     SDL_RenderFillRect(renderer, &fshape.shape[3]);
-    //render block's outlines
+    /*//render block's outlines
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
     SDL_RenderDrawRect(renderer, &fshape.shape[0]);
     SDL_RenderDrawRect(renderer, &fshape.shape[1]);
     SDL_RenderDrawRect(renderer, &fshape.shape[2]);
-    SDL_RenderDrawRect(renderer, &fshape.shape[3]);
+    SDL_RenderDrawRect(renderer, &fshape.shape[3]);*/
 }
 
 void drawS_shape(SDL_Renderer *renderer, int x, int y){
     int size = 50;
-    I_shape fshape;
+    S_shape fshape;
     //1 block
     fshape.shape[0].x = x;
     fshape.shape[0].y = y;
@@ -265,17 +277,17 @@ void drawS_shape(SDL_Renderer *renderer, int x, int y){
     SDL_RenderFillRect(renderer, &fshape.shape[1]);
     SDL_RenderFillRect(renderer, &fshape.shape[2]);
     SDL_RenderFillRect(renderer, &fshape.shape[3]);
-    //render block's outlines
+    /*//render block's outlines
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
     SDL_RenderDrawRect(renderer, &fshape.shape[0]);
     SDL_RenderDrawRect(renderer, &fshape.shape[1]);
     SDL_RenderDrawRect(renderer, &fshape.shape[2]);
-    SDL_RenderDrawRect(renderer, &fshape.shape[3]);
+    SDL_RenderDrawRect(renderer, &fshape.shape[3]);*/
 }
 
 void drawT_shape(SDL_Renderer *renderer, int x, int y){
     int size = 50;
-    I_shape fshape;
+    T_shape fshape;
     //1 block
     fshape.shape[0].x = x;
     fshape.shape[0].y = y;
@@ -303,10 +315,10 @@ void drawT_shape(SDL_Renderer *renderer, int x, int y){
     SDL_RenderFillRect(renderer, &fshape.shape[1]);
     SDL_RenderFillRect(renderer, &fshape.shape[2]);
     SDL_RenderFillRect(renderer, &fshape.shape[3]);
-    //render block's outlines
+    /*//render block's outlines
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
     SDL_RenderDrawRect(renderer, &fshape.shape[0]);
     SDL_RenderDrawRect(renderer, &fshape.shape[1]);
     SDL_RenderDrawRect(renderer, &fshape.shape[2]);
-    SDL_RenderDrawRect(renderer, &fshape.shape[3]);
+    SDL_RenderDrawRect(renderer, &fshape.shape[3]);*/
 }

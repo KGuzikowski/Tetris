@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_video.h>
@@ -7,9 +9,17 @@
 #include "graphic.h"
 
 #define WIDTH 500
-#define HEIGHT 800
+#define HEIGHT 900
 
 int main(int argc, char *argv[]){
+    //variables
+    int score = 0;
+    int x_pos, y_pos = 120;
+
+    //generating random y_pos
+    srand(time(NULL));
+    x_pos = (rand()%WIDTH) + 1;
+
     //SDL initialization
     if(SDL_Init(SDL_INIT_VIDEO) != 0){
         printf("Error initializing SDL: %s\n", SDL_GetError());
@@ -44,8 +54,8 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    TTF_Font *title_font = TTF_OpenFont("roboto.ttf", 70);
-    if(title_font = NULL){
+    TTF_Font *title_font = TTF_OpenFont("font/roboto.ttf", 60);
+    if(title_font == NULL){
         printf("Error openint title_font: %s\n", TTF_GetError());
         TTF_Quit();
         SDL_DestroyRenderer(renderer);
@@ -53,9 +63,22 @@ int main(int argc, char *argv[]){
         SDL_Quit();
         return 1;
     }
-    TTF_Font *score_font = TTF_OpenFont("roboto.ttf", 35);
-    if(title_font = NULL){
+
+    TTF_Font *score_font = TTF_OpenFont("font/roboto.ttf", 30);
+    if(score_font == NULL){
         printf("Error openint score_font: %s\n", TTF_GetError());
+        TTF_CloseFont(title_font);
+        TTF_Quit();
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 1;
+    }
+
+    TTF_Font *score_num_font = TTF_OpenFont("font/roboto.ttf", 30);
+    if(score_num_font == NULL){
+        printf("Error openint score_num_font: %s\n", TTF_GetError());
+        TTF_CloseFont(score_font);
         TTF_CloseFont(title_font);
         TTF_Quit();
         SDL_DestroyRenderer(renderer);
@@ -69,8 +92,10 @@ int main(int argc, char *argv[]){
     while(isOpen){
         SDL_Event event;
         while(SDL_PollEvent(&event)){
-            if(event.type == SDL_QUIT){
+            switch(event.type){
+            case SDL_QUIT:
                 isOpen = 0;
+                break;
             }
         }
 
@@ -78,13 +103,26 @@ int main(int argc, char *argv[]){
         set_bg(renderer);
 
         //set title text
-        set_text(window, renderer, title_font, score_font);
+        set_text(window, renderer, title_font, score_font, score_num_font, score);
+
+        /*SDL_Rect rectToDraw = {100,100,100,100};
+        SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+        SDL_RenderFillRect(renderer, &rectToDraw);
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        SDL_RenderDrawRect(renderer, &rectToDraw);*/
+
+        /*drawI_shape(renderer, x_pos, y_pos);
+        drawL_shape(renderer, 200, 200);
+        drawR_shape(renderer, 200, 200);
+        drawS_shape(renderer, 200, 200);*/
+        drawT_shape(renderer, x_pos, y_pos);
 
         //draw
         SDL_RenderPresent(renderer);
+
     }
 
-    SDL_FreeSurface(title);
+    TTF_CloseFont(score_num_font);
     TTF_CloseFont(score_font);
     TTF_CloseFont(title_font);
     TTF_Quit();

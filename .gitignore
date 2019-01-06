@@ -1,0 +1,10 @@
+/bin
+/font
+/obj
+libfreetype-6.dll
+SDL2.dll
+SDL2_ttf.dll
+Tetris.cbp
+Tetris.depend
+Tetris.layout
+zlib1.dll

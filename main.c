@@ -108,15 +108,15 @@ int main(int argc, char *argv[]){
                     break;
                 case SDL_SCANCODE_LEFT:
                 case SDL_SCANCODE_A:
-                    block.x -= VEL;
+                    move_to_sides(&block, 0, VEL);
                     break;
                 case SDL_SCANCODE_DOWN:
                 case SDL_SCANCODE_S:
-                    block.y += VEL;
+                    move_down(&block, VEL);
                     break;
                 case SDL_SCANCODE_RIGHT:
                 case SDL_SCANCODE_D:
-                    block.x += VEL;
+                    move_to_sides(&block, 1, VEL);
                     break;
                 }
                 break;
@@ -130,7 +130,7 @@ int main(int argc, char *argv[]){
         set_text(window, renderer, title_font, score_font, score_num_font, score);
 
         //block animation
-        if(count%50 == 0) block.y += VEL;
+        if(count%50 == 0) move_down(&block, VEL);
         //draw block
         if(block.isDone) block = generate_block();
         else draw_block(renderer, &block);

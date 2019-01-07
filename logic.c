@@ -81,8 +81,42 @@ block_shape generate_block(){
         block.y = 150;
         int x = (rand()%10);
         if(x < 2) x += 1;
-        block.x = x*50;
-        return block;
         block.x = (rand()%9+1)*50;
+        return block;
+    } else {
+        block_shape block;
+        block.kind_of_block = 5;
+        block.isDone = 0;
+        SDL_Color color = {238, 27, 185, 0};
+        block.block_color = color;
+        block.size = 50;
+        block.y = 150;
+        block.x = (rand()%9+1)*50;
+        return block;
     }
+}
+
+//moving block left and right
+void move_to_sides(block_shape *block, int side, int vel){
+    if(side == 0){
+        int min_pos = block->shape[0].x;
+        for(int i = 1; i < 4; i++){
+            if(block->shape[i].x < min_pos) min_pos = block->shape[i].x;
+        }
+        if(min_pos > 0) block->x -= vel;
+    } else if(side == 1){
+        int max_pos = block->shape[0].x + block->size;
+        for(int i = 1; i < 4; i++){
+            if((block->shape[i].x + block->size) > max_pos) max_pos = block->shape[i].x + block->size;
+        }
+        if(max_pos < 500) block->x += vel;
+    }
+}
+
+void move_down(block_shape *block, int vel){
+    int max_pos = block->shape[0].y + block->size;
+    for(int i = 1; i < 4; i++){
+        if((block->shape[i].y + block->size) > max_pos) max_pos = block->shape[i].y + block->size;
+    }
+    if(max_pos < 900) block->y += vel;
 }

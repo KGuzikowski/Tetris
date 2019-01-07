@@ -17,6 +17,13 @@ typedef struct{
     int size;
 } block_shape;
 
+typedef struct{
+    SDL_Rect shape;
+    SDL_Color block_color;
+    int used;
+} grid_elem;
+
+grid_elem grid[15][10];
 
 void set_bg(SDL_Renderer *renderer);
 void set_text(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font, TTF_Font *score_font, TTF_Font *score_num_font, int score);

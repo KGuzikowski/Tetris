@@ -19,7 +19,7 @@ block_shape generate_block(){
         block.block_color = color;
         block.size = 50;
         block.y = 150;
-        block.x = (rand()%10) * 50;
+        block.x = (rand()%10)*50;
         return block;
     } else if(block_num == 2){
         block_shape block;
@@ -29,7 +29,7 @@ block_shape generate_block(){
         block.block_color = color;
         block.size = 50;
         block.y = 150;
-        block.x = (rand()%10) * 50;
+        block.x = (rand()%9)*50;
         return block;
     } else if(block_num == 3){
         block_shape block;
@@ -39,7 +39,7 @@ block_shape generate_block(){
         block.block_color = color;
         block.size = 50;
         block.y = 150;
-        block.x = (rand()%10) * 50;
+        block.x = (rand()%9)*50;
         return block;
     } else if(block_num == 4){
         block_shape block;
@@ -49,9 +49,7 @@ block_shape generate_block(){
         block.block_color = color;
         block.size = 50;
         block.y = 150;
-        int x = (rand()%10) * 50;
-        if(x < 3) x += 2;
-        block.x = x;
+        block.x = (rand()%8+2)*50;
         return block;
     } else if(block_num == 5){
         block_shape block;
@@ -61,9 +59,7 @@ block_shape generate_block(){
         block.block_color = color;
         block.size = 50;
         block.y = 150;
-        int x = (rand()%10) * 50;
-        if(x < 2) x += 1;
-        block.x = x;
+        block.x = (rand()%9+1)*50;
         return block;
     } else if(block_num == 6){
         block_shape block;
@@ -73,7 +69,7 @@ block_shape generate_block(){
         block.block_color = color;
         block.size = 50;
         block.y = 150;
-        block.x = (rand()%10) * 50;
+        block.x = (rand()%8)*50;
         return block;
     } else if(block_num == 7){
         block_shape block;
@@ -83,9 +79,10 @@ block_shape generate_block(){
         block.block_color = color;
         block.size = 50;
         block.y = 150;
-        int x = (rand()%10) * 50;
+        int x = (rand()%10);
         if(x < 2) x += 1;
-        block.x = x;
+        block.x = x*50;
         return block;
+        block.x = (rand()%9+1)*50;
     }
 }

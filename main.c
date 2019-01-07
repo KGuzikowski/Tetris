@@ -104,6 +104,7 @@ int main(int argc, char *argv[]){
                 switch(event.key.keysym.scancode){
                 case SDL_SCANCODE_UP:
                 case SDL_SCANCODE_W:
+                    block.isDone = 1;
                     break;
                 case SDL_SCANCODE_LEFT:
                 case SDL_SCANCODE_A:
@@ -131,7 +132,8 @@ int main(int argc, char *argv[]){
         //block animation
         if(count%50 == 0) block.y += VEL;
         //draw block
-        draw_block(renderer, &block);
+        if(block.isDone) block = generate_block();
+        else draw_block(renderer, &block);
 
         //set grid
         set_grid(renderer);

@@ -134,6 +134,22 @@ void set_text(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font, 
     SDL_DestroyTexture(score_num);
 }
 
+void draw_elemsGrid(grid_elem grid[15][10], SDL_Renderer *renderer){
+    int r, g, b, a;
+    for(int i = 0; i < 15; i++){
+        for(int j = 0; j < 10; j++){
+            if(grid[i][j].used){
+                r = grid[i][j].block_color.r;
+                g = grid[i][j].block_color.g;
+                b = grid[i][j].block_color.b;
+                a = grid[i][j].block_color.a;
+                SDL_SetRenderDrawColor(renderer, r, g, b, a);
+                SDL_RenderFillRect(renderer, &grid[i][j].shape);
+            }
+        }
+    }
+}
+
 void draw_block(SDL_Renderer *renderer, block_shape *fshape){
     switch(fshape->kind_of_block){
     case 1:

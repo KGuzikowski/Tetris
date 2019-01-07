@@ -14,4 +14,6 @@ void move_to_sides(block_shape *block, int side,  int vel);
 
 void move_down(block_shape *block, int vel);
 
+void can_move_down(block_shape *block, grid_elem grid[15][10], int vel);
+
 #endif // LOGIC_H_INCLUDED

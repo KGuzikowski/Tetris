@@ -29,6 +29,8 @@ void set_bg(SDL_Renderer *renderer);
 void set_text(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font, TTF_Font *score_font, TTF_Font *score_num_font, int score);
 void set_grid(SDL_Renderer *renderer);
 
+void draw_elemsGrid(grid_elem grid[15][10], SDL_Renderer *renderer);
+
 void draw_block(SDL_Renderer *renderer, block_shape *fshape);
 
 void drawI_shape(SDL_Renderer *renderer, block_shape *fshape);

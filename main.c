@@ -89,6 +89,13 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
+    //initialize grid array
+    for(int i = 0; i < 15; i++){
+        for(int j = 0; j < 10; j++){
+            grid[i][j].used = 0;
+        }
+    }
+
     //generating random block
     block_shape block = generate_block();
 
@@ -130,7 +137,14 @@ int main(int argc, char *argv[]){
         set_text(window, renderer, title_font, score_font, score_num_font, score);
 
         //block animation
-        if(count%50 == 0) move_down(&block, VEL);
+        if(count%50 == 0 && block.isDone == 0) move_down(&block, VEL);
+
+        //check if block can move
+        can_move_down(&block, grid, VEL);
+
+        //draw grid of done blocks
+        draw_elemsGrid(grid, renderer);
+
         //draw block
         if(block.isDone) block = generate_block();
         else draw_block(renderer, &block);

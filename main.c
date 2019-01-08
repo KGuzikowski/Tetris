@@ -137,7 +137,7 @@ int main(int argc, char *argv[]){
         set_text(window, renderer, title_font, score_font, score_num_font, score);
 
         //block animation
-        //if(count%50 == 0 && block.isDone == 0) move_down(&block, VEL);
+        if(count%50 == 0 && block.isDone == 0) move_down(&block, VEL);
 
         //check if block can move
         can_move_down(&block, grid, VEL);

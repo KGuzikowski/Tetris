@@ -12,8 +12,7 @@
 //generating random block
 block_shape generate_block(){
     int block_num;
-    //block_num = (rand()%7) + 1;
-    block_num = 1;
+    block_num = (rand()%7) + 1;
 
     if(block_num == 1){
         block_shape block;
@@ -33,7 +32,7 @@ block_shape generate_block(){
         SDL_Color color = {48, 223, 56, 0};
         block.block_color = color;
         block.size = 50;
-        block.y = 150;
+        block.y = 200;
         block.x = (rand()%9)*50;
         block.rotated = 0;
         return block;
@@ -55,7 +54,7 @@ block_shape generate_block(){
         SDL_Color color = {28, 202, 199, 0};
         block.block_color = color;
         block.size = 50;
-        block.y = 150;
+        block.y = 200;
         block.x = (rand()%8+2)*50;
         block.rotated = 0;
         return block;
@@ -66,7 +65,7 @@ block_shape generate_block(){
         SDL_Color color = {238, 27, 185, 0};
         block.block_color = color;
         block.size = 50;
-        block.y = 150;
+        block.y = 200;
         block.x = (rand()%9+1)*50;
         block.rotated = 0;
         return block;
@@ -77,7 +76,7 @@ block_shape generate_block(){
         SDL_Color color = {41, 34, 236, 0};
         block.block_color = color;
         block.size = 50;
-        block.y = 150;
+        block.y = 200;
         block.x = (rand()%8)*50;
         block.rotated = 0;
         return block;
@@ -88,7 +87,7 @@ block_shape generate_block(){
         SDL_Color color = {242, 162, 105, 0};
         block.block_color = color;
         block.size = 50;
-        block.y = 150;
+        block.y = 250;
         int x = (rand()%10);
         if(x < 2) x += 1;
         block.x = (rand()%9+1)*50;
@@ -101,7 +100,7 @@ block_shape generate_block(){
         SDL_Color color = {238, 27, 185, 0};
         block.block_color = color;
         block.size = 50;
-        block.y = 150;
+        block.y = 200;
         block.x = (rand()%9+1)*50;
         block.rotated = 0;
         return block;
@@ -166,6 +165,43 @@ void can_move_down(block_shape *block, grid_elem grid[15][10], int vel){
 }
 
 void rotate(block_shape *block){
-    if(block->rotated == 270) block->rotated = 0;
-    else block->rotated += 90;
+    int r = block->rotated;
+    switch(block->kind_of_block){
+    case 1:
+        if(r == 0 && can_move_right(block, 2) && can_move_left(block, 1)) block->rotated += 90;
+        else if(r == 90)block->rotated += 90;
+        else if(r == 180 && can_move_left(block, 2) && can_move_right(block, 1)) block->rotated += 90;
+        else if(r == 270) block->rotated = 0;
+        break;
+    case 2:
+        if(r == 0 && can_move_left(block, 1)) block->rotated += 90;
+        else if(r == 90)block->rotated += 90;
+        else if(r == 180 && can_move_right(block, 1)) block->rotated += 90;
+        else if(r == 270) block->rotated = 0;
+        break;
+    case 4:
+        if(r == 0) block->rotated += 90;
+        else if(r == 90 && can_move_left(block, 1))block->rotated += 90;
+        else if(r == 180) block->rotated += 90;
+        else if(r == 270 && can_move_right(block, 1)) block->rotated = 0;
+        break;
+    case 5:
+        if(r == 0) block->rotated += 90;
+        else if(r == 90 && can_move_left(block, 1))block->rotated += 90;
+        else if(r == 180) block->rotated += 90;
+        else if(r == 270 && can_move_right(block, 1)) block->rotated = 0;
+        break;
+    case 6:
+        if(r == 0) block->rotated += 90;
+        else if(r == 90 && can_move_left(block, 1))block->rotated += 90;
+        else if(r == 180) block->rotated += 90;
+        else if(r == 270 && can_move_right(block, 1)) block->rotated = 0;
+        break;
+    case 7:
+        if(r == 0 && can_move_right(block, 2)) block->rotated += 90;
+        else if(r == 90)block->rotated += 90;
+        else if(r == 180 && can_move_left(block, 2)) block->rotated += 90;
+        else if(r == 270) block->rotated = 0;
+        break;
+    }
 }

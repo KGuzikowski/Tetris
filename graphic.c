@@ -200,30 +200,26 @@ void drawI_shape(SDL_Renderer *renderer, block_shape *fshape){
         fshape->shape[3].w = fshape->size;
         fshape->shape[3].h = fshape->size;
     } else if(fshape->rotated == 90){
-        if(can_move_right(fshape, 2)){
-            //1 block
-            fshape->shape[0].x = fshape->x + 2*fshape->size;
-            fshape->shape[0].y = fshape->y;
-            fshape->shape[0].w = fshape->size;
-            fshape->shape[0].h = fshape->size;
-            //2 block
-            fshape->shape[1].x = fshape->x + fshape->size;
-            fshape->shape[1].y = fshape->y;
-            fshape->shape[1].w = fshape->size;
-            fshape->shape[1].h = fshape->size;
-            //3 block
-            fshape->shape[2].x = fshape->x;
-            fshape->shape[2].y = fshape->y;
-            fshape->shape[2].w = fshape->size;
-            fshape->shape[2].h = fshape->size;
-            //4 block
-            fshape->shape[3].x = fshape->x - fshape->size;
-            fshape->shape[3].y = fshape->y;
-            fshape->shape[3].w = fshape->size;
-            fshape->shape[3].h = fshape->size;
-        } else {
-            fshape->rotated = 0;
-        }
+        //1 block
+        fshape->shape[0].x = fshape->x + 2*fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x + fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x - fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
     } else if(fshape->rotated == 180){
         //1 block
         fshape->shape[0].x = fshape->x;
@@ -246,30 +242,26 @@ void drawI_shape(SDL_Renderer *renderer, block_shape *fshape){
         fshape->shape[3].w = fshape->size;
         fshape->shape[3].h = fshape->size;
     } else if(fshape->rotated == 270){
-        if(can_move_right(fshape, 2)){
-            //1 block
-            fshape->shape[0].x = fshape->x - 2*fshape->size;
-            fshape->shape[0].y = fshape->y;
-            fshape->shape[0].w = fshape->size;
-            fshape->shape[0].h = fshape->size;
-            //2 block
-            fshape->shape[1].x = fshape->x - fshape->size;;
-            fshape->shape[1].y = fshape->y;
-            fshape->shape[1].w = fshape->size;
-            fshape->shape[1].h = fshape->size;
-            //3 block
-            fshape->shape[2].x = fshape->x;
-            fshape->shape[2].y = fshape->y;
-            fshape->shape[2].w = fshape->size;
-            fshape->shape[2].h = fshape->size;
-            //4 block
-            fshape->shape[3].x = fshape->x + fshape->size;
-            fshape->shape[3].y = fshape->y;
-            fshape->shape[3].w = fshape->size;
-            fshape->shape[3].h = fshape->size;
-        } else {
-            fshape->rotated = 180;
-        }
+        //1 block
+        fshape->shape[0].x = fshape->x - 2*fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x - fshape->size;;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x + fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
     }
 
     //set color
@@ -287,26 +279,91 @@ void drawI_shape(SDL_Renderer *renderer, block_shape *fshape){
 }
 
 void drawL_shape(SDL_Renderer *renderer, block_shape *fshape){
-    //1 block
-    fshape->shape[0].x = fshape->x;
-    fshape->shape[0].y = fshape->y;
-    fshape->shape[0].w = fshape->size;
-    fshape->shape[0].h = fshape->size;
-    //2 block
-    fshape->shape[1].x = fshape->x;
-    fshape->shape[1].y = fshape->y + fshape->size;
-    fshape->shape[1].w = fshape->size;
-    fshape->shape[1].h = fshape->size;
-    //3 block
-    fshape->shape[2].x = fshape->x;
-    fshape->shape[2].y = fshape->y + 2*fshape->size;
-    fshape->shape[2].w = fshape->size;
-    fshape->shape[2].h = fshape->size;
-    //4 block
-    fshape->shape[3].x = fshape->x + fshape->size;
-    fshape->shape[3].y = fshape->y + 2*fshape->size;
-    fshape->shape[3].w = fshape->size;
-    fshape->shape[3].h = fshape->size;
+    if(fshape->rotated == 0){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y + fshape->size;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x + fshape->size;
+        fshape->shape[3].y = fshape->y + fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 90){
+        //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x - fshape->size;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x - fshape->size;
+        fshape->shape[3].y = fshape->y + fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 180){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y - fshape->size;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x - fshape->size;
+        fshape->shape[3].y = fshape->y - fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 270){
+        //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x + fshape->size;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x + fshape->size;
+        fshape->shape[3].y = fshape->y - fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    }
 
     //set color
     int r, g, b, a;
@@ -323,26 +380,91 @@ void drawL_shape(SDL_Renderer *renderer, block_shape *fshape){
 }
 
 void drawR_shape(SDL_Renderer *renderer, block_shape *fshape){
-    //1 block
-    fshape->shape[0].x = fshape->x;
-    fshape->shape[0].y = fshape->y;
-    fshape->shape[0].w = fshape->size;
-    fshape->shape[0].h = fshape->size;
-    //2 block
-    fshape->shape[1].x = fshape->x + fshape->size;
-    fshape->shape[1].y = fshape->y;
-    fshape->shape[1].w = fshape->size;
-    fshape->shape[1].h = fshape->size;
-    //3 block
-    fshape->shape[2].x = fshape->x;
-    fshape->shape[2].y = fshape->y + fshape->size;
-    fshape->shape[2].w = fshape->size;
-    fshape->shape[2].h = fshape->size;
-    //4 block
-    fshape->shape[3].x = fshape->x + fshape->size;
-    fshape->shape[3].y = fshape->y + fshape->size;
-    fshape->shape[3].w = fshape->size;
-    fshape->shape[3].h = fshape->size;
+     if(fshape->rotated == 0){
+        //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y - fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x - fshape->size;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+     } else if(fshape->rotated == 90){
+        //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x + fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y - fshape->size;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+     } else if(fshape->rotated == 180){
+        //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y - fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x + fshape->size;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+     } else if(fshape->rotated == 270){
+        //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x - fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y + fshape->size;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+     }
 
     //set color
     int r, g, b, a;
@@ -359,26 +481,91 @@ void drawR_shape(SDL_Renderer *renderer, block_shape *fshape){
 }
 
 void drawS_shape(SDL_Renderer *renderer, block_shape *fshape){
-    //1 block
-    fshape->shape[0].x = fshape->x;
-    fshape->shape[0].y = fshape->y;
-    fshape->shape[0].w = fshape->size;
-    fshape->shape[0].h = fshape->size;
-    //2 block
-    fshape->shape[1].x = fshape->x - fshape->size;
-    fshape->shape[1].y = fshape->y;
-    fshape->shape[1].w = fshape->size;
-    fshape->shape[1].h = fshape->size;
-    //3 block
-    fshape->shape[2].x = fshape->x - fshape->size;
-    fshape->shape[2].y = fshape->y + fshape->size;
-    fshape->shape[2].w = fshape->size;
-    fshape->shape[2].h = fshape->size;
-    //4 block
-    fshape->shape[3].x = fshape->x - 2*fshape->size;
-    fshape->shape[3].y = fshape->y + fshape->size;
-    fshape->shape[3].w = fshape->size;
-    fshape->shape[3].h = fshape->size;
+    if(fshape->rotated == 0){
+       //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y - fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x - fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 90){
+       //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x + fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y - fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 180){
+       //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y + fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x + fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 270){
+       //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x - fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y + fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    }
 
     //set color
     int r, g, b, a;
@@ -395,26 +582,91 @@ void drawS_shape(SDL_Renderer *renderer, block_shape *fshape){
 }
 
 void drawT_shape(SDL_Renderer *renderer, block_shape *fshape){
-    //1 block
-    fshape->shape[0].x = fshape->x;
-    fshape->shape[0].y = fshape->y;
-    fshape->shape[0].w = fshape->size;
-    fshape->shape[0].h = fshape->size;
-    //2 block
-    fshape->shape[1].x = fshape->x;
-    fshape->shape[1].y = fshape->y + fshape->size;
-    fshape->shape[1].w = fshape->size;
-    fshape->shape[1].h = fshape->size;
-    //3 block
-    fshape->shape[2].x = fshape->x - fshape->size;
-    fshape->shape[2].y = fshape->y + fshape->size;
-    fshape->shape[2].w = fshape->size;
-    fshape->shape[2].h = fshape->size;
-    //4 block
-    fshape->shape[3].x = fshape->x + fshape->size;
-    fshape->shape[3].y = fshape->y + fshape->size;
-    fshape->shape[3].w = fshape->size;
-    fshape->shape[3].h = fshape->size;
+    if(fshape->rotated == 0){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x - fshape->size;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x + fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 90){
+        //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y - fshape->size;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y + fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 180){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x + fshape->size;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x - fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 270){
+        //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y + fshape->size;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y - fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    }
 
     //set color
     int r, g, b, a;
@@ -431,26 +683,91 @@ void drawT_shape(SDL_Renderer *renderer, block_shape *fshape){
 }
 
 void drawZ_shape(SDL_Renderer *renderer, block_shape *fshape){
-    //1 block
-    fshape->shape[0].x = fshape->x;
-    fshape->shape[0].y = fshape->y;
-    fshape->shape[0].w = fshape->size;
-    fshape->shape[0].h = fshape->size;
-    //2 block
-    fshape->shape[1].x = fshape->x + fshape->size;
-    fshape->shape[1].y = fshape->y;
-    fshape->shape[1].w = fshape->size;
-    fshape->shape[1].h = fshape->size;
-    //3 block
-    fshape->shape[2].x = fshape->x + fshape->size;
-    fshape->shape[2].y = fshape->y + fshape->size;
-    fshape->shape[2].w = fshape->size;
-    fshape->shape[2].h = fshape->size;
-    //4 block
-    fshape->shape[3].x = fshape->x + 2*fshape->size;
-    fshape->shape[3].y = fshape->y + fshape->size;
-    fshape->shape[3].w = fshape->size;
-    fshape->shape[3].h = fshape->size;
+    if(fshape->rotated == 0){
+        //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y - fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x + fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 90){
+        //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y - fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x + fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y + fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 180){
+        //1 block
+        fshape->shape[0].x = fshape->x + fshape->size;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y + fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x - fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 270){
+        //1 block
+        fshape->shape[0].x = fshape->x - fshape->size;
+        fshape->shape[0].y = fshape->y + fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x - fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y - fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    }
 
     //set color
     int r, g, b, a;
@@ -467,26 +784,91 @@ void drawZ_shape(SDL_Renderer *renderer, block_shape *fshape){
 }
 
 void drawJ_shape(SDL_Renderer *renderer, block_shape *fshape){
-    //1 block
-    fshape->shape[0].x = fshape->x;
-    fshape->shape[0].y = fshape->y;
-    fshape->shape[0].w = fshape->size;
-    fshape->shape[0].h = fshape->size;
-    //2 block
-    fshape->shape[1].x = fshape->x;
-    fshape->shape[1].y = fshape->y + fshape->size;
-    fshape->shape[1].w = fshape->size;
-    fshape->shape[1].h = fshape->size;
-    //3 block
-    fshape->shape[2].x = fshape->x;
-    fshape->shape[2].y = fshape->y + 2*fshape->size;
-    fshape->shape[2].w = fshape->size;
-    fshape->shape[2].h = fshape->size;
-    //4 block
-    fshape->shape[3].x = fshape->x - fshape->size;
-    fshape->shape[3].y = fshape->y + 2*fshape->size;
-    fshape->shape[3].w = fshape->size;
-    fshape->shape[3].h = fshape->size;
+    if(fshape->rotated == 0){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y - 2*fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y - fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x - fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 90){
+        //1 block
+        fshape->shape[0].x = fshape->x + 2*fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x + fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y - fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 180){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y + 2*fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y + fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x + fshape->size;
+        fshape->shape[3].y = fshape->y;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 270){
+        //1 block
+        fshape->shape[0].x = fshape->x - 2*fshape->size;
+        fshape->shape[0].y = fshape->y;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x - fshape->size;
+        fshape->shape[1].y = fshape->y;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y + fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    }
 
     //set color
     int r, g, b, a;

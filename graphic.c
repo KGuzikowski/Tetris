@@ -6,6 +6,7 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "graphic.h"
+#include "logic.h"
 
 #define WIDTH 500
 #define HEIGHT 900
@@ -177,29 +178,108 @@ void draw_block(SDL_Renderer *renderer, block_shape *fshape){
 }
 
 void drawI_shape(SDL_Renderer *renderer, block_shape *fshape){
-    //1 block
-    fshape->shape[0].x = fshape->x;
-    fshape->shape[0].y = fshape->y;
-    fshape->shape[0].w = fshape->size;
-    fshape->shape[0].h = fshape->size;
-    //2 block
-    fshape->shape[1].x = fshape->x;
-    fshape->shape[1].y = fshape->y + fshape->size;
-    fshape->shape[1].w = fshape->size;
-    fshape->shape[1].h = fshape->size;
-    //3 block
-    fshape->shape[2].x = fshape->x;
-    fshape->shape[2].y = fshape->y + 2*fshape->size;
-    fshape->shape[2].w = fshape->size;
-    fshape->shape[2].h = fshape->size;
-    //4 block
-    fshape->shape[3].x = fshape->x;
-    fshape->shape[3].y = fshape->y + 3*fshape->size;
-    fshape->shape[3].w = fshape->size;
-    fshape->shape[3].h = fshape->size;
+    if(fshape->rotated == 0){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y - 2*fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y - fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y + fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 90){
+        if(can_move_right(fshape, 2)){
+            //1 block
+            fshape->shape[0].x = fshape->x + 2*fshape->size;
+            fshape->shape[0].y = fshape->y;
+            fshape->shape[0].w = fshape->size;
+            fshape->shape[0].h = fshape->size;
+            //2 block
+            fshape->shape[1].x = fshape->x + fshape->size;
+            fshape->shape[1].y = fshape->y;
+            fshape->shape[1].w = fshape->size;
+            fshape->shape[1].h = fshape->size;
+            //3 block
+            fshape->shape[2].x = fshape->x;
+            fshape->shape[2].y = fshape->y;
+            fshape->shape[2].w = fshape->size;
+            fshape->shape[2].h = fshape->size;
+            //4 block
+            fshape->shape[3].x = fshape->x - fshape->size;
+            fshape->shape[3].y = fshape->y;
+            fshape->shape[3].w = fshape->size;
+            fshape->shape[3].h = fshape->size;
+        } else {
+            fshape->rotated = 0;
+        }
+    } else if(fshape->rotated == 180){
+        //1 block
+        fshape->shape[0].x = fshape->x;
+        fshape->shape[0].y = fshape->y + 2*fshape->size;
+        fshape->shape[0].w = fshape->size;
+        fshape->shape[0].h = fshape->size;
+        //2 block
+        fshape->shape[1].x = fshape->x;
+        fshape->shape[1].y = fshape->y + fshape->size;
+        fshape->shape[1].w = fshape->size;
+        fshape->shape[1].h = fshape->size;
+        //3 block
+        fshape->shape[2].x = fshape->x;
+        fshape->shape[2].y = fshape->y;
+        fshape->shape[2].w = fshape->size;
+        fshape->shape[2].h = fshape->size;
+        //4 block
+        fshape->shape[3].x = fshape->x;
+        fshape->shape[3].y = fshape->y - fshape->size;
+        fshape->shape[3].w = fshape->size;
+        fshape->shape[3].h = fshape->size;
+    } else if(fshape->rotated == 270){
+        if(can_move_right(fshape, 2)){
+            //1 block
+            fshape->shape[0].x = fshape->x - 2*fshape->size;
+            fshape->shape[0].y = fshape->y;
+            fshape->shape[0].w = fshape->size;
+            fshape->shape[0].h = fshape->size;
+            //2 block
+            fshape->shape[1].x = fshape->x - fshape->size;;
+            fshape->shape[1].y = fshape->y;
+            fshape->shape[1].w = fshape->size;
+            fshape->shape[1].h = fshape->size;
+            //3 block
+            fshape->shape[2].x = fshape->x;
+            fshape->shape[2].y = fshape->y;
+            fshape->shape[2].w = fshape->size;
+            fshape->shape[2].h = fshape->size;
+            //4 block
+            fshape->shape[3].x = fshape->x + fshape->size;
+            fshape->shape[3].y = fshape->y;
+            fshape->shape[3].w = fshape->size;
+            fshape->shape[3].h = fshape->size;
+        } else {
+            fshape->rotated = 180;
+        }
+    }
 
+    //set color
+    int r, g, b, a;
+    r = fshape->block_color.r;
+    g = fshape->block_color.g;
+    b = fshape->block_color.b;
+    a = fshape->block_color.a;
     //render filled blocks
-    SDL_SetRenderDrawColor(renderer, 234, 184, 46, 0);
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderFillRect(renderer, &fshape->shape[0]);
     SDL_RenderFillRect(renderer, &fshape->shape[1]);
     SDL_RenderFillRect(renderer, &fshape->shape[2]);
@@ -228,8 +308,14 @@ void drawL_shape(SDL_Renderer *renderer, block_shape *fshape){
     fshape->shape[3].w = fshape->size;
     fshape->shape[3].h = fshape->size;
 
+    //set color
+    int r, g, b, a;
+    r = fshape->block_color.r;
+    g = fshape->block_color.g;
+    b = fshape->block_color.b;
+    a = fshape->block_color.a;
     //render filled blocks
-    SDL_SetRenderDrawColor(renderer, 48, 223, 56, 0);
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderFillRect(renderer, &fshape->shape[0]);
     SDL_RenderFillRect(renderer, &fshape->shape[1]);
     SDL_RenderFillRect(renderer, &fshape->shape[2]);
@@ -258,8 +344,14 @@ void drawR_shape(SDL_Renderer *renderer, block_shape *fshape){
     fshape->shape[3].w = fshape->size;
     fshape->shape[3].h = fshape->size;
 
+    //set color
+    int r, g, b, a;
+    r = fshape->block_color.r;
+    g = fshape->block_color.g;
+    b = fshape->block_color.b;
+    a = fshape->block_color.a;
     //render filled blocks
-    SDL_SetRenderDrawColor(renderer, 202, 65, 28, 0);
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderFillRect(renderer, &fshape->shape[0]);
     SDL_RenderFillRect(renderer, &fshape->shape[1]);
     SDL_RenderFillRect(renderer, &fshape->shape[2]);
@@ -288,8 +380,14 @@ void drawS_shape(SDL_Renderer *renderer, block_shape *fshape){
     fshape->shape[3].w = fshape->size;
     fshape->shape[3].h = fshape->size;
 
+    //set color
+    int r, g, b, a;
+    r = fshape->block_color.r;
+    g = fshape->block_color.g;
+    b = fshape->block_color.b;
+    a = fshape->block_color.a;
     //render filled blocks
-    SDL_SetRenderDrawColor(renderer, 28, 202, 199, 0);
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderFillRect(renderer, &fshape->shape[0]);
     SDL_RenderFillRect(renderer, &fshape->shape[1]);
     SDL_RenderFillRect(renderer, &fshape->shape[2]);
@@ -318,8 +416,14 @@ void drawT_shape(SDL_Renderer *renderer, block_shape *fshape){
     fshape->shape[3].w = fshape->size;
     fshape->shape[3].h = fshape->size;
 
+    //set color
+    int r, g, b, a;
+    r = fshape->block_color.r;
+    g = fshape->block_color.g;
+    b = fshape->block_color.b;
+    a = fshape->block_color.a;
     //render filled blocks
-    SDL_SetRenderDrawColor(renderer, 238, 27, 185, 0);
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderFillRect(renderer, &fshape->shape[0]);
     SDL_RenderFillRect(renderer, &fshape->shape[1]);
     SDL_RenderFillRect(renderer, &fshape->shape[2]);
@@ -348,8 +452,14 @@ void drawZ_shape(SDL_Renderer *renderer, block_shape *fshape){
     fshape->shape[3].w = fshape->size;
     fshape->shape[3].h = fshape->size;
 
+    //set color
+    int r, g, b, a;
+    r = fshape->block_color.r;
+    g = fshape->block_color.g;
+    b = fshape->block_color.b;
+    a = fshape->block_color.a;
     //render filled blocks
-    SDL_SetRenderDrawColor(renderer, 41, 34, 236, 0);
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderFillRect(renderer, &fshape->shape[0]);
     SDL_RenderFillRect(renderer, &fshape->shape[1]);
     SDL_RenderFillRect(renderer, &fshape->shape[2]);
@@ -378,8 +488,14 @@ void drawJ_shape(SDL_Renderer *renderer, block_shape *fshape){
     fshape->shape[3].w = fshape->size;
     fshape->shape[3].h = fshape->size;
 
+    //set color
+    int r, g, b, a;
+    r = fshape->block_color.r;
+    g = fshape->block_color.g;
+    b = fshape->block_color.b;
+    a = fshape->block_color.a;
     //render filled blocks
-    SDL_SetRenderDrawColor(renderer, 242, 162, 105, 0);
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderFillRect(renderer, &fshape->shape[0]);
     SDL_RenderFillRect(renderer, &fshape->shape[1]);
     SDL_RenderFillRect(renderer, &fshape->shape[2]);

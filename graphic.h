@@ -15,6 +15,7 @@ typedef struct{
     SDL_Color block_color;
     int x, y;
     int size;
+    int rotated;
 } block_shape;
 
 typedef struct{

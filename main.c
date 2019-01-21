@@ -101,6 +101,8 @@ int main(int argc, char *argv[]){
 
     //Game loop
     while(isOpen){
+
+        //event loop
         SDL_Event event;
         while(SDL_PollEvent(&event)){
             switch(event.type){
@@ -111,19 +113,19 @@ int main(int argc, char *argv[]){
                 switch(event.key.keysym.scancode){
                 case SDL_SCANCODE_UP:
                 case SDL_SCANCODE_W:
-                    rotate(&block);
+                    rotate(&block, grid);
                     break;
                 case SDL_SCANCODE_LEFT:
                 case SDL_SCANCODE_A:
-                    move_to_sides(&block, 0, VEL);
+                    move_to_sides(&block, 0, VEL, grid);
                     break;
                 case SDL_SCANCODE_DOWN:
                 case SDL_SCANCODE_S:
-                    move_down(&block, VEL);
+                    can_move_down(&block, grid, VEL, &score);
                     break;
                 case SDL_SCANCODE_RIGHT:
                 case SDL_SCANCODE_D:
-                    move_to_sides(&block, 1, VEL);
+                    move_to_sides(&block, 1, VEL, grid);
                     break;
                 }
                 break;
@@ -136,18 +138,29 @@ int main(int argc, char *argv[]){
         //set title text
         set_text(window, renderer, title_font, score_font, score_num_font, score);
 
-        //block animation
-        if(count%50 == 0 && block.isDone == 0) move_down(&block, VEL);
-
-        //check if block can move
-        can_move_down(&block, grid, VEL);
+        //check if game over
+        if(gameOver(&block, grid) == 1){
+            SDL_Delay(2000);
+            gameOverMessage(window, renderer, title_font);
+            SDL_RenderPresent(renderer);
+            SDL_Delay(4000);
+            break;
+        }
 
         //draw grid of done blocks
         draw_elemsGrid(grid, renderer);
 
-        //draw block
+        //draw element
+        draw_block(renderer, &block);
+
+        //block animation
+        if(count%50 == 0) can_move_down(&block, grid, VEL, &score);
+
+        //destroy line
+        destroyLine(grid, &score);
+
+        //generate new element
         if(block.isDone) block = generate_block();
-        else draw_block(renderer, &block);
 
         //set grid
         set_grid(renderer);
@@ -164,5 +177,5 @@ int main(int argc, char *argv[]){
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    return 1;
+    return 0;
 }

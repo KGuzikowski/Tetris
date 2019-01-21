@@ -34,6 +34,42 @@ void set_grid(SDL_Renderer *renderer){
     }
 }
 
+void gameOverMessage(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font){
+    SDL_Color title_color = {255, 255, 255, 0};
+    SDL_Surface *title = TTF_RenderText_Solid(title_font, "game over", title_color);
+    if(!title){
+        printf("error creating game over surface: %s\n", SDL_GetError());
+        TTF_CloseFont(title_font);
+        TTF_Quit();
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        exit(1);
+    }
+
+    SDL_Texture *title_texture = SDL_CreateTextureFromSurface(renderer, title);
+    SDL_FreeSurface(title);
+    if(!title_texture){
+        printf("error creating title texture: %s\n", SDL_GetError());
+        TTF_CloseFont(title_font);
+        TTF_Quit();
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        exit(1);
+    }
+
+    SDL_Rect dest;
+
+    //Get dimensions of title texture
+    SDL_QueryTexture(title_texture, NULL, NULL, &dest.w, &dest.h);
+    dest.x = (WIDTH - dest.w)/2;
+    dest.y = (HEIGHT - dest.h)/2;
+
+    SDL_RenderCopy(renderer, title_texture, NULL, &dest);
+    SDL_DestroyTexture(title_texture);
+}
+
 void set_text(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font, TTF_Font *score_font, TTF_Font *score_num_font, int score){
     SDL_Color title_color = {255, 255, 255, 0};
     SDL_Surface *title = TTF_RenderText_Solid(title_font, "TETRIS", title_color);
@@ -179,6 +215,7 @@ void draw_block(SDL_Renderer *renderer, block_shape *fshape){
 
 void drawI_shape(SDL_Renderer *renderer, block_shape *fshape){
     if(fshape->rotated == 0){
+        // printf("%d", fshape->steps_to_wall);
         //1 block
         fshape->shape[0].x = fshape->x;
         fshape->shape[0].y = fshape->y - 2*fshape->size;

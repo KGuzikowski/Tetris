@@ -16,6 +16,7 @@ typedef struct{
     int x, y;
     int size;
     int rotated;
+    int steps_moved;
 } block_shape;
 
 typedef struct{
@@ -28,6 +29,7 @@ grid_elem grid[15][10];
 
 void set_bg(SDL_Renderer *renderer);
 void set_text(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font, TTF_Font *score_font, TTF_Font *score_num_font, int score);
+void gameOverMessage(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *title_font);
 void set_grid(SDL_Renderer *renderer);
 
 void draw_elemsGrid(grid_elem grid[15][10], SDL_Renderer *renderer);
